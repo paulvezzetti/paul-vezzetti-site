@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SectionBody from '$lib/components/SectionBody.svelte';
 	import LILogo from '../images/LILogo.png';
 	import GitHubLogo from '../images/GitHubLogo.png';
 
@@ -11,7 +12,10 @@
 </script>
 
 <section>
+	<div class="header-sticky">
 		<h1>About me</h1>
+	</div>
+	<SectionBody>
 		<p class="lead-text">I like to make <span style="font-style:italic">things...</span></p>
 		{#each paragraphs as para}
 			<p class="main-text">{para}</p>
@@ -24,12 +28,12 @@
 				><img class="link-button" src={GitHubLogo} alt="GitHub" /></a
 			>
 		</div>
-	
+	</SectionBody>
 </section>
 
 <style>
 	p {
-		font-size: 2vh;
+		font-size: 1rem;
 		margin: 1vh 0;
 	}
 

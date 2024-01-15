@@ -15,11 +15,12 @@
 :root {
 	--font-body: 'Inter-Thin';
 	--font-header: 'Inter';
+	--background-body: #1f1f1f;
 	font-family: var(--font-body);
 }
 
 body {
-	background-color: #1f1f1f;
+	background-color: var(--background-body);
 	min-height: 100vh;
 	margin: 0;
 	overflow-y: hidden;
@@ -32,9 +33,19 @@ section {
 	height: 100vh;
 	position: relative;
 	scroll-snap-align: start;
-	margin: 0 5vw;
-	padding: 0 3vw;
+	/* margin: 0 5vw;
+	padding: 0 3vw; */
 }
+
+
+
+@media only screen and (max-width: 768px) {
+	section {
+		height: fit-content;
+		min-height: 100vh;
+	}
+}
+
 
 h1 {
 	font-family: var(--font-header);
@@ -44,6 +55,16 @@ h1 {
 	text-align: left;
 	padding-left: 4vw;
 }
+
+@media only screen and (max-width: 768px) {
+	.header-sticky {
+		position: sticky;
+		top: 0;
+		backdrop-filter: blur(10px);
+		margin: 0;
+	}
+}
+
 
 p {
 	font-family: 'Inter-Thin';

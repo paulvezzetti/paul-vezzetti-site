@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SectionBody from '$lib/components/SectionBody.svelte';
 	import { Projects, type Project } from '$lib/data/projects';
 	import { onMount } from 'svelte';
 	import link from '../images/link.svg';
@@ -6,6 +7,7 @@
 
 	let selectedProject: Project | undefined;
 	let linkSrc: typeof link | typeof link_hover = link;
+	let clientWidth = 0;
 
 	function onProjectSelect(projectId: number) {
 		selectedProject = Projects.find((p) => p.id === projectId);
@@ -16,44 +18,79 @@
 	});
 </script>
 
-<section>
-	<h1>Projects</h1>
-	<div class="dual-pane">
-		<div class="project-list">
-			{#each Projects as project (project.id)}
-				<button
-					title={project.title}
-					class="project-button {project.id === selectedProject?.id ? 'selected' : ''}"
-					on:click={() => onProjectSelect(project.id)}>{project.title}</button
-				>
-			{/each}
-		</div>
-		<div class="project-details">
-			<img src={selectedProject?.screenshot} alt="screenshot" class="screenshot" />
-			<div class="project-content">
-				<p>
-					<span class="project-type">Project Type ·</span>
-					<span>{selectedProject?.owner}</span>
-					<span class="project-type">·</span>
-					<a
-						href={selectedProject?.link}
-						target="_blank"
-						on:mouseenter={() => (linkSrc = link_hover)}
-						on:mouseleave={() => (linkSrc = link)}
-						><img src={linkSrc} alt="link" class="link-icon" /></a
-					>
-				</p>
-				<p class="project-date">{selectedProject?.date}</p>
-				<p class="project-description">{@html selectedProject?.description}</p>
-			</div>
-		</div>
+<section bind:clientWidth>
+	<div class="header-sticky">
+		<h1>Projects</h1>
 	</div>
+	<SectionBody>
+		<div class="dual-pane">
+			{#if clientWidth > 768}
+				<div class="project-list">
+					{#each Projects as project (project.id)}
+						<button
+							title={project.title}
+							class="project-button {project.id === selectedProject?.id ? 'selected' : ''}"
+							on:click={() => onProjectSelect(project.id)}>{project.title}</button
+						>
+					{/each}
+				</div>
+				<div class="project-details">
+					<img src={selectedProject?.screenshot} alt="screenshot" class="screenshot" />
+					<div class="project-content">
+						<p>
+							<span class="project-type">Project Type ·</span>
+							<span>{selectedProject?.owner}</span>
+							<span class="project-type">·</span>
+							<a
+								href={selectedProject?.link}
+								target="_blank"
+								on:mouseenter={() => (linkSrc = link_hover)}
+								on:mouseleave={() => (linkSrc = link)}
+								><img src={linkSrc} alt="link" class="link-icon" /></a
+							>
+						</p>
+						<p class="project-date">{selectedProject?.date}</p>
+						<p class="project-description">{@html selectedProject?.description}</p>
+					</div>
+				</div>
+			{:else}
+				{#each Projects as project (project.id)}
+					<div class="project-details">
+						<img src={project.screenshot} alt="screenshot" class="screenshot" />
+						<div class="project-content">
+							<p>
+								<span class="project-type">Project Type ·</span>
+								<span>{project.owner}</span>
+								<span class="project-type">·</span>
+								<a
+									href={project.link}
+									target="_blank"
+									on:mouseenter={() => (linkSrc = link_hover)}
+									on:mouseleave={() => (linkSrc = link)}
+									><img src={linkSrc} alt="link" class="link-icon" /></a
+								>
+							</p>
+							<p class="project-date">{project.date}</p>
+							<p class="project-description">{@html project.description}</p>
+						</div>
+					</div>
+				{/each}
+			{/if}
+		</div>
+	</SectionBody>
 </section>
 
 <style>
 	.dual-pane {
 		display: grid;
 		grid-template-columns: auto 1fr;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.dual-pane {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 
 	.link-icon {
@@ -126,10 +163,6 @@
 
 	.project-description {
 		padding-top: 2vh;
-	}
-
-	.project-description > a:link {
-		color: red;
 	}
 
 	.screenshot {

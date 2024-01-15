@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SectionBody from '$lib/components/SectionBody.svelte';
 	import { Experiences, type Experience } from '$lib/data/experience';
 	import { onMount } from 'svelte';
 	import link from '../images/link.svg';
@@ -6,7 +7,7 @@
 
 	let selectedProject: Experience | undefined;
 	let linkSrc: typeof link | typeof link_hover = link;
-
+	let clientWidth = 0;
 	function onProjectSelect(projectId: number) {
 		selectedProject = Experiences.find((p) => p.id === projectId);
 	}
@@ -16,73 +17,69 @@
 	});
 </script>
 
-<section>
-	<h1>Experience</h1>
-	<div class="dual-pane">
-		<div class="project-list">
-			{#each Experiences as experience (experience.id)}
-				<button
-					title={experience.company}
-					class="project-button {experience.id === selectedProject?.id ? 'selected' : ''}"
-					on:click={() => onProjectSelect(experience.id)}>{experience.company}</button
-				>
-			{/each}
-		</div>
-		<div class="project-details">
-			<div class="header">
-				<p class="title-text">{selectedProject?.title}</p>
-				<img class="logo" src={selectedProject?.logo} alt={selectedProject?.company} />
-				<p class="sub-title-text">{selectedProject?.company_full}</p>
-				<p class="sub-title-text date">{selectedProject?.dates}</p>
-			</div>
-			<div class="bullets-container">
-				<ul>
-					{#each selectedProject?.bullets ?? [] as bullet}
-						<li>{bullet}</li>
-					{/each}
-				</ul>
-			</div>
-		</div>
-		<!-- <div class="project-details">
-			<div class="project-description">
-				<p>{selectedProject?.title}</p>
-				<p>{selectedProject?.dates}</p>
-				<div class="bullets-container">
-					<ul>
-						{#each selectedProject?.bullets ?? [] as bullet}
-							<li>{bullet}</li>
-						{/each}
-					</ul>
-				</div>
-			</div>
-		</div> -->
+<section bind:clientWidth>
+	<div class="header-sticky">
+		<h1>Experience</h1>
 	</div>
+	<SectionBody>
+		<div class="dual-pane">
+			{#if clientWidth > 768}
+				<div class="project-list">
+					{#each Experiences as experience (experience.id)}
+						<button
+							title={experience.company}
+							class="project-button {experience.id === selectedProject?.id ? 'selected' : ''}"
+							on:click={() => onProjectSelect(experience.id)}>{experience.company}</button
+						>
+					{/each}
+				</div>
+				<div class="project-details">
+					<div class="header">
+						<p class="title-text">{selectedProject?.title}</p>
+						<img class="logo" src={selectedProject?.logo} alt={selectedProject?.company} />
+						<p class="sub-title-text">{selectedProject?.company_full}</p>
+						<p class="sub-title-text date">{selectedProject?.dates}</p>
+					</div>
+					<div class="bullets-container">
+						<ul>
+							{#each selectedProject?.bullets ?? [] as bullet}
+								<li>{bullet}</li>
+							{/each}
+						</ul>
+					</div>
+				</div>
+			{:else}
+				{#each Experiences as experience (experience.id)}
+					<div class="header">
+						<p class="title-text">{experience.title}</p>
+						<img class="logo" src={experience.logo} alt={experience.company} />
+						<p class="sub-title-text">{experience.company_full}</p>
+						<p class="sub-title-text date">{experience.dates}</p>
+					</div>
+					<div class="bullets-container">
+						<ul>
+							{#each experience.bullets ?? [] as bullet}
+								<li>{bullet}</li>
+							{/each}
+						</ul>
+					</div>
+				{/each}
+			{/if}
+		</div>
+	</SectionBody>
 </section>
 
 <style>
-	section {
-		background-color: #2c2c2c;
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
-		position: relative;
-		scroll-snap-align: start;
-		margin: 0 5vw;
-	}
-
-	h1 {
-		text-align: left;
-		padding-left: 4vw;
-	}
-
 	.dual-pane {
 		display: grid;
 		grid-template-columns: auto 1fr;
 	}
 
-	.link-icon {
-		height: 16px;
-		width: 16px;
+	@media only screen and (max-width: 768px) {
+		.dual-pane {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 
 	.project-list {
@@ -179,7 +176,7 @@
 		border-bottom-left-radius: 1.5vw;
 		border-bottom-right-radius: 1.5vw;
 		color: #b7b7b7;
-		font-size: 1.6vmin;
+		font-size: 1rem;
 	}
 
 	.bullets-container > ul {
