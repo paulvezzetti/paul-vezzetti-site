@@ -11,7 +11,6 @@
 </script>
 
 <section>
-	
 		<h1>About me</h1>
 		<p class="lead-text">I like to make <span style="font-style:italic">things...</span></p>
 		{#each paragraphs as para}
@@ -29,38 +28,6 @@
 </section>
 
 <style>
-	section {
-		background-color: #2c2c2c;
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
-		position: relative;
-		scroll-snap-align: start;
-        margin: 0 5vw;
-        padding: 0 3vw;
-	}
-
-	.about {
-		display: flex;
-		flex-direction: column;
-		background-color: #3c3c3c;
-		position: absolute;
-		padding: 0 10vw 0 4vw;
-		top: 3vh;
-		bottom: 3vh;
-		left: 3vw;
-		right: 3vw;
-		border: 2px solid #5a5a5a;
-		border-radius: 1.5vw;
-		box-shadow: 0.5vw 0.5vh 1.2vw 0 rgba(0, 0, 0, 0.8);
-		overflow-y: auto;
-	}
-
-	h1 {
-		text-align: left;
-        padding-left: 4vw;
-	}
-
 	p {
 		font-size: 2vh;
 		margin: 1vh 0;

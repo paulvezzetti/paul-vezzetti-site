@@ -51,21 +51,6 @@
 </section>
 
 <style>
-	section {
-		background-color: #2c2c2c;
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
-		position: relative;
-		scroll-snap-align: start;
-		margin: 0 5vw;
-	}
-
-	h1 {
-		text-align: left;
-		padding-left: 4vw;
-	}
-
 	.dual-pane {
 		display: grid;
 		grid-template-columns: auto 1fr;

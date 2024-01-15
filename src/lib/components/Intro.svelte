@@ -16,18 +16,14 @@
 
 <style>
 	section {
-		background-color: #2c2c2c;
-		display: flex;
-        flex-direction: column;
-		height: 100vh;
-        scroll-snap-align: start;
+		margin: 0;
+		padding: 0;
 	}
 
 	.intro {
         position: relative;
 		background-image: url('../images/abstract-background.png');
 		background-size: cover;
-        scroll-snap-align: start;
 	}
 
 	.main-block {
@@ -39,12 +35,12 @@
 
 	.subtle {
         font-family: 'Courier New', Courier, monospace;
-		font-size: 1.6vw;
+		font-size: 1.6vmax;
 	}
 
 	.attention {
         font-family: 'Inter';
-		font-size: 10vw;
+		font-size: 10vmax;
 	}
 
     .detail {
@@ -61,7 +57,7 @@
 	}
 
 	.long-text {
-		font-size: 2vw;
+		font-size: 2vmax;
 		color: #f3f3f3;
         max-width: 60vw;
 	}

@@ -50,28 +50,14 @@
 	<Experience></Experience>
 
 	<Projects></Projects>
-	
-    <div class="main-scroller">
+
+	<div class="main-scroller">
 		<SectionScroller {sections} selected={selectedSection} on:setSection={changeSection}
 		></SectionScroller>
 	</div>
 </div>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
-		scroll-snap-align: start;
-	}
-
-	h1 {
-		width: 100%;
-		color: #d3d3d3;
-	}
-
 	.scroller {
 		overflow-y: scroll;
 		overflow-x: hidden;
@@ -90,5 +76,15 @@
 		top: 50%;
 		right: 18px;
 		transform: translateY(-50%);
+	}
+
+	@media only screen and (max-width: 768px) {
+		.scroller {
+			scroll-snap-type: none; 
+		}
+
+		.main-scroller {
+			display: none;
+		}
 	}
 </style>
