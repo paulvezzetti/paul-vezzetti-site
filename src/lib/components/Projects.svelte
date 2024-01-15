@@ -55,25 +55,23 @@
 				</div>
 			{:else}
 				{#each Projects as project (project.id)}
-					<div class="project-details">
+					<div class="project-header">
 						<img src={project.screenshot} alt="screenshot" class="screenshot" />
-						<div class="project-content">
-							<p>
-								<span class="project-type">Project Type ·</span>
-								<span>{project.owner}</span>
-								<span class="project-type">·</span>
-								<a
-									href={project.link}
-									target="_blank"
-									on:mouseenter={() => (linkSrc = link_hover)}
-									on:mouseleave={() => (linkSrc = link)}
-									><img src={linkSrc} alt="link" class="link-icon" /></a
-								>
-							</p>
-							<p class="project-date">{project.date}</p>
-							<p class="project-description">{@html project.description}</p>
-						</div>
+						<p>
+							<span class="project-type">Project Type ·</span>
+							<span>{project.owner}</span>
+							<span class="project-type">·</span>
+							<a
+								href={project.link}
+								target="_blank"
+								on:mouseenter={() => (linkSrc = link_hover)}
+								on:mouseleave={() => (linkSrc = link)}
+								><img src={linkSrc} alt="link" class="link-icon" /></a
+							>
+						</p>
+						<p class="project-date">{project.date}</p>
 					</div>
+					<p class="project-description">{@html project.description}</p>
 				{/each}
 			{/if}
 		</div>
@@ -144,7 +142,7 @@
 
 	.project-date {
 		font-family: Arial, Helvetica, sans-serif;
-		font-size: min(2vmin, 14px);
+		font-size: 0.8rem;
 		padding-top: 0.5vh;
 	}
 
@@ -163,10 +161,23 @@
 
 	.project-description {
 		padding-top: 2vh;
+		margin-bottom: 10vh;
+	}
+
+	.project-header {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-column-gap: 3vw;
 	}
 
 	.screenshot {
 		height: 6vh;
 		border-radius: 12px;
+		border: 1px solid #555555;
+	}
+
+	.project-header > .screenshot {
+		grid-row-start: 1;
+		grid-row-end: 3;
 	}
 </style>
