@@ -21,9 +21,10 @@
 	export let inputHeight = 0;
 
 	const marginTop = 0;
-	const marginRight = 20;
-	const marginBottom = 30;
+	$: marginRight = inputWidth * 0.1;
+	$: marginBottom = inputHeight * 0.05;
 	const marginLeft = 10;
+	$: fontSize = inputWidth < 300 ? 'x-small' : inputWidth > 400 ? 'large' : 'small';
 
 	const tickLabels = ['', 'Basics', 'Beginner', 'Advanced', 'Expert'];
 	const gradColors = ['#3671BE', '#2B64B5', '#1F57AC', '#1449A2', '#083C99'];
@@ -119,6 +120,7 @@
 			.attr('y', (d) => y(d.skill) + y.bandwidth() / 2)
 			.attr('dy', '0.35em')
 			.attr('dx', 16)
+			.style('font-size', `${fontSize}`)
 			.text((d) => d.skill);
 
 		// Create the x-axis
@@ -126,7 +128,7 @@
 			.append('g')
 			.attr('transform', `translate(0,${inputHeight - marginBottom})`)
 			.attr('color', '#d3d3d3')
-			.style('font-size', 'large')
+			.style('font-size', `${fontSize}`)
 			.call(
 				d3
 					.axisBottom(x)

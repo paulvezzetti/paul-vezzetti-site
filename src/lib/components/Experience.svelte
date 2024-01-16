@@ -153,20 +153,20 @@
 	}
 
 	.title-text {
-		font-size: min(2.5vmin, 24px);
+		font-size: max(2.5vmin, 1rem);
 		font-family: 'Inter';
 		grid-column-start: 1;
 		grid-column-end: 3;
 	}
 
 	.sub-title-text {
-		font-size: min(1.5vmin, 16px);
+		font-size: max(1.5vmin, 0.75rem);
 		font-weight: 400;
 	}
 
 	.date {
 		font-family: Arial, Helvetica, sans-serif;
-		font-size: min(1.4vmin, 12px);
+		font-size: max(1.4vmin, 0.6rem);
 	}
 
 	.bullets-container {

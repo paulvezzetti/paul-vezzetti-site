@@ -142,7 +142,7 @@
 
 	.project-date {
 		font-family: Arial, Helvetica, sans-serif;
-		font-size: 0.8rem;
+		font-size: max(1.4vmin, 0.6rem);
 		padding-top: 0.5vh;
 	}
 
