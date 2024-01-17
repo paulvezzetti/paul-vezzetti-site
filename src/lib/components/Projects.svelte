@@ -56,6 +56,7 @@
 			{:else}
 				{#each Projects as project (project.id)}
 					<div class="project-header">
+						<p class="project-title">{project.title}</p>
 						<img src={project.screenshot} alt="screenshot" class="screenshot" />
 						<p>
 							<span class="project-type">Project Type ·</span>
@@ -107,6 +108,7 @@
 		border: none;
 		border-bottom: 1px solid transparent;
 		color: #9a9a9a;
+		font-size: 1.2rem;
 		text-align: left;
 		padding: 1vh 1vw;
 		margin-left: 8px;
@@ -136,14 +138,22 @@
 		visibility: hidden;
 	}
 
+	.project-title {
+		display: flex;
+		grid-column-start: 1;
+		grid-column-end: 3;
+		font-family: 'Inter';
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+
 	.project-type {
 		font-family: 'Inter';
 	}
 
 	.project-date {
 		font-family: Arial, Helvetica, sans-serif;
-		font-size: max(1.4vmin, 0.6rem);
-		padding-top: 0.5vh;
+		font-size: 0.9rem;
 	}
 
 	.project-content {
@@ -177,7 +187,7 @@
 	}
 
 	.project-header > .screenshot {
-		grid-row-start: 1;
-		grid-row-end: 3;
+		grid-row-start: 2;
+		grid-row-end: 4;
 	}
 </style>
