@@ -160,6 +160,7 @@
 	}
 
 	.sub-title-text {
+		font-family: 'Inter';
 		font-size: max(1.5vmin, 0.75rem);
 		font-weight: 400;
 	}
@@ -175,7 +176,7 @@
 		/* background-color: #5a5a5a; */
 		border-bottom-left-radius: 1.5vw;
 		border-bottom-right-radius: 1.5vw;
-		color: #b7b7b7;
+		color: #f0f0f0;
 		font-size: 1rem;
 	}
 
