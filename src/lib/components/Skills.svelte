@@ -41,7 +41,7 @@
 	}
 
 	.skills-text {
-		font-size: 2vh;
+		font-size: 1rem;
 		margin-right: 5vw;
 	}
 </style>

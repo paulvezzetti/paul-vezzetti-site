@@ -45,7 +45,8 @@
 		flex: 1;
 		display: flex;
 		justify-content: space-around;
-		align-items: center;
+		align-items: end;
+		margin-bottom: 4vh;
 	}
 
 	.link-button {

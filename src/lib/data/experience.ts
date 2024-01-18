@@ -16,7 +16,7 @@ export interface Experience {
 export const Experiences: Array<Experience> = [
 	{
 		id: 0,
-		title: 'Senior Visualization Systems Engineer',
+		title: 'Senior Visualizations Engineer',
 		company: 'Mode Analytics',
 		company_full: 'Mode Analytics/ThoughtSpot',
 		dates: 'MAY 2021 - PRESENT',

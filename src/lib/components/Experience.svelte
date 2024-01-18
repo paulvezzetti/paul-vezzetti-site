@@ -93,6 +93,7 @@
 		border: none;
 		border-bottom: 1px solid transparent;
 		color: #9a9a9a;
+		font-size: 1.2rem;
 		text-align: left;
 		padding: 1vh 1vw;
 		margin-left: 8px;
@@ -153,7 +154,7 @@
 	}
 
 	.title-text {
-		font-size: max(2.5vmin, 1rem);
+		font-size: 1.25rem;
 		font-family: 'Inter';
 		grid-column-start: 1;
 		grid-column-end: 3;

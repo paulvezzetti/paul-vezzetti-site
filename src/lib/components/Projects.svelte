@@ -35,9 +35,10 @@
 					{/each}
 				</div>
 				<div class="project-details">
-					<img src={selectedProject?.screenshot} alt="screenshot" class="screenshot" />
-					<div class="project-content">
-						<p>
+					<div class="project-header">
+						<p class="project-title"></p>
+						<img src={selectedProject?.screenshot} alt="screenshot" class="screenshot" />
+						<p class="project-type-text">
 							<span class="project-type">Project Type ·</span>
 							<span>{selectedProject?.owner}</span>
 							<span class="project-type">·</span>
@@ -50,8 +51,8 @@
 							>
 						</p>
 						<p class="project-date">{selectedProject?.date}</p>
-						<p class="project-description">{@html selectedProject?.description}</p>
 					</div>
+					<p class="project-description">{@html selectedProject?.description}</p>
 				</div>
 			{:else}
 				{#each Projects as project (project.id)}
@@ -83,13 +84,6 @@
 	.dual-pane {
 		display: grid;
 		grid-template-columns: auto 1fr;
-	}
-
-	@media only screen and (max-width: 768px) {
-		.dual-pane {
-			display: flex;
-			flex-direction: column;
-		}
 	}
 
 	.link-icon {
@@ -147,6 +141,10 @@
 		margin-bottom: 0.5rem;
 	}
 
+	.project-type-text {
+		font-size: 1.5rem;
+	}
+
 	.project-type {
 		font-family: 'Inter';
 	}
@@ -154,16 +152,12 @@
 	.project-date {
 		font-family: Arial, Helvetica, sans-serif;
 		font-size: 0.9rem;
-	}
-
-	.project-content {
-		display: flex;
-		flex-direction: column;
+		margin-top: 0.5rem;
 	}
 
 	.project-details {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		column-gap: 3vw;
 		padding: 0.5vw 5vw;
 		color: #333333;
@@ -188,6 +182,19 @@
 
 	.project-header > .screenshot {
 		grid-row-start: 2;
-		grid-row-end: 4;
+		grid-row-end: 5;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.dual-pane {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		.project-date {
+			font-size: 1.3rem;
+		}
 	}
 </style>
