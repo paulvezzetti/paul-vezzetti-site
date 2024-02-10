@@ -86,7 +86,7 @@
 
 		svg
 			.append('g')
-			.attr('transform', `translate(0,${inputHeight - marginBottom - 8})`)
+			.attr('transform', `translate(0,${Math.max(0, inputHeight - marginBottom - 8)})`)
 			.attr('color', '#333333')
 			.call(
 				d3.axisBottom(x).ticks(5).tickSize(-inputHeight)
@@ -104,7 +104,7 @@
 			.join('rect')
 			.attr('x', x(0))
 			.attr('y', (d) => y(d.skill))
-			.attr('width', (d) => x(d.level) - x(0))
+			.attr('width', (d) => Math.max(0, x(d.level) - x(0)))
 			.attr('height', y.bandwidth())
 			.style('fill', (d) => `url(#grad${Math.round(d.level)})`);
 
@@ -126,7 +126,7 @@
 		// Create the x-axis
 		svg
 			.append('g')
-			.attr('transform', `translate(0,${inputHeight - marginBottom})`)
+			.attr('transform', `translate(0,${Math.max(0, inputHeight - marginBottom)})`)
 			.attr('color', '#d3d3d3')
 			.style('font-size', `${fontSize}`)
 			.call(

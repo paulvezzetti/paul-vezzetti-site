@@ -114,7 +114,7 @@ export const Projects: ReadonlyArray<Project> = [
 		date: '2022 - 2023',
 		link: 'https://updates.mode.com/more-explorable-reports-with-drill-anywhere-269598',
 		description:
-			`After just a few months at <span style="font-family:'Inter'">Mode</span>, I experiences my first Hack Day. ` +
+			`After just a few months at <span style="font-family:'Inter'">Mode</span>, I experienced my first Hack Day. ` +
 			`This was always a big event for the company with a wide variety of projects. I developed a <span style="font-family:'Inter'">'Drill Anywhere'</span> ` +
 			`feature as an enhancement to our <span style="font-style: italic">soon-to-be-released</span> <span style="font-family:'Inter'">Visual Explorer</span>.<br><br>` +
 			`This feature allowed the user to explore the underlying data behind any data element in the visualization. It was a big success and ` +
